@@ -15,7 +15,7 @@ def filter_posts(post_df):
     output_df = output_df[output_df.is_self == False]
     output_df = output_df[output_df.over_18 == False]
     output_df = output_df[output_df.pinned == False]
-    output_df = output_df[output_df.score >= 5]
+    output_df = output_df[output_df.score >= 3]
     output_df = output_df[output_df.url.str.endswith('.jpg', na=False)]
     return output_df
 
@@ -44,6 +44,7 @@ def scrape_subreddit(min_posts, subreddit):
         df_sub = df_sub.append(df_new_sub)
         created_utc_now_sub = df_sub.tail(1)['created_utc']
         df_sub = filter_posts(df_sub)
+        print(f'        now have {len(df_sub.index)} posts')
         
     # Clean up the post data that we scraped
     df_sub = df_sub.set_index('id')
@@ -56,7 +57,7 @@ try:
     if os.path.isfile('data/dataset.h5'):
         print(f'loading from file!')
         dataset_df = pd.read_hdf('data/dataset.h5', 'df')
-        already_scraped = pd.read_hdf('data/dataset.h5', 'as')
+        already_scraped = pd.read_hdf('data/dataset.h5', 'contentslist')
     else:
         print(f'no file to load from!')
         dataset_df = pd.DataFrame()
@@ -69,8 +70,8 @@ try:
             dataset_df = pd.concat([dataset_df, scraped_df])
             dataset_df = dataset_df.append(scraped_df)
             already_scraped = already_scraped.append(pd.Series([sub_name]))
-            print(f'      done scraping sub r/{sub_name}')
+            print(f'     done scraping sub r/{sub_name}')
 finally:
     print(f'dumping output to file!')
     dataset_df.to_hdf('data/dataset.h5', key='df')
-    dataset_df.to_hdf('data/dataset.h5', key='as')
+    dataset_df.to_hdf('data/dataset.h5', key='contentslist')
