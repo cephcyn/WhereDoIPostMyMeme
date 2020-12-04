@@ -1,9 +1,10 @@
 # WhereDoIPostMyMeme
 
-###Dependencies (TODO create an environment yml for this project):
-- 
+Dependencies:
+* Pandas
+* (TODO create an environment.yml for this project)
 
-###Motivation:
+Motivation:
 
 *I have a fire meme, and don’t know where to post it--whatever shall I do?*
 
