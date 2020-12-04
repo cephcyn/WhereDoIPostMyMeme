@@ -2,6 +2,7 @@ import urllib.request
 import json
 import pandas as pd
 import numpy as np
+import os
 
 # list of subreddits to collect posts from
 sub_list = ['greentext', 'deepfriedmemes', 'me_irl', '2meirl4meirl', 'dankmemes', 
@@ -51,11 +52,25 @@ def scrape_subreddit(min_posts, subreddit):
                      'score', 'subreddit', 'title', 'upvote_ratio', 'url', 'url_overridden_by_dest']]
     return df_sub
 
-dataset_df = pd.DataFrame()
-
-for sub_name in sub_list:
-    scraped_df = scrape_subreddit(5000, sub_name)
-    dataset_df = pd.concat([dataset_df, scraped_df])
-    dataset_df = dataset_df.append(scraped_df)
+try:
+    if os.path.isfile('data/dataset.h5'):
+        print(f'loading from file!')
+        dataset_df = pd.read_hdf('data/dataset.h5', 'df')
+        already_scraped = pd.read_hdf('data/dataset.h5', 'as')
+    else:
+        print(f'no file to load from!')
+        dataset_df = pd.DataFrame()
+        already_scraped = pd.Series([], dtype='string')
     
-dataset_df.to_hdf('data/dataset.h5', key='df')
+    for sub_name in sub_list:
+        if not any(already_scraped.str.match(f'^{sub_name}$')):
+            print(f'currently scraping sub r/{sub_name}')
+            scraped_df = scrape_subreddit(5000, sub_name)
+            dataset_df = pd.concat([dataset_df, scraped_df])
+            dataset_df = dataset_df.append(scraped_df)
+            already_scraped = already_scraped.append(pd.Series([sub_name]))
+            print(f'      done scraping sub r/{sub_name}')
+finally:
+    print(f'dumping output to file!')
+    dataset_df.to_hdf('data/dataset.h5', key='df')
+    dataset_df.to_hdf('data/dataset.h5', key='as')
