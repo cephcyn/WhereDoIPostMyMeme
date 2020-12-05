@@ -68,10 +68,9 @@ try:
             print(f'currently scraping sub r/{sub_name}')
             scraped_df = scrape_subreddit(5000, sub_name)
             dataset_df = pd.concat([dataset_df, scraped_df])
-            dataset_df = dataset_df.append(scraped_df)
             already_scraped = already_scraped.append(pd.Series([sub_name]))
             print(f'     done scraping sub r/{sub_name}')
 finally:
     print(f'dumping output to file!')
     dataset_df.to_hdf('data/dataset.h5', key='df')
-    dataset_df.to_hdf('data/dataset.h5', key='contentslist')
+    already_scraped.to_hdf('data/dataset.h5', key='contentslist')
