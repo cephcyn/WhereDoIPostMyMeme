@@ -5,10 +5,13 @@ import numpy as np
 import os
 
 # list of subreddits to collect posts from
-sub_list = ['greentext', 'deepfriedmemes', 'me_irl', '2meirl4meirl', 'dankmemes', 
+sub_list = ['greentext', 'DeepFriedMemes', 'me_irl', '2meirl4meirl', 'dankmemes', 
             'adviceanimals', 'dogelore', 'wholesomememes', 'CatsPlayingDnd', 'glitch_art', 
             'awwnime', 'EarthPorn', 'tumblr', 'NapkinMemes', 'chickenswearingpants', 
             'BreadStapledToTrees', 'terriblefacebookmemes', 'Animemes', 'dataisbeautiful']
+
+# number of posts to collect from each sub
+num_posts_each_sub = 5000
 
 def filter_posts(post_df):
     output_df = post_df
@@ -57,22 +60,20 @@ try:
     if os.path.isfile('data/dataset.h5'):
         print(f'loading from file!')
         dataset_df = pd.read_hdf('data/dataset.h5', 'df')
-        already_scraped = pd.read_hdf('data/dataset.h5', 'contentslist')
     else:
         print(f'no file to load from!')
         dataset_df = pd.DataFrame()
-        already_scraped = pd.Series([], dtype='string')
     
     for sub_name in sub_list:
-        if not any(already_scraped.str.match(f'^{sub_name}$')):
-            print(f'currently scraping sub r/{sub_name}')
-            scraped_df = scrape_subreddit(5000, sub_name)
+        num_collected = len(dataset_df[dataset_df.subreddit.str.lower() == sub_name.lower()])
+        if num_collected < num_posts_each_sub:
+            num_to_collect = num_posts_each_sub - num_collected
+            print(f'currently scraping sub r/{sub_name}: need {num_to_collect}')
+            scraped_df = scrape_subreddit(num_to_collect, sub_name)
             dataset_df = pd.concat([dataset_df, scraped_df])
-            already_scraped = already_scraped.append(pd.Series([sub_name]))
             print(f'     done scraping sub r/{sub_name}')
 finally:
     print(f'rewriting/dumping output to file!')
     if os.path.isfile('data/dataset.h5'):
         os.remove('data/dataset.h5')
     dataset_df.to_hdf('data/dataset.h5', key='df')
-    already_scraped.to_hdf('data/dataset.h5', key='contentslist')
