@@ -40,21 +40,23 @@ def scrape_subreddit(min_posts, subreddit):
     
     # make sure we get at least args.post_count number of posts scraped
     # but also don't go past the beginning of the subreddit
-    while (len(df_sub.index) < min_posts) and (int(created_utc_now_sub) > int(created_utc_first_sub)): 
-        with urllib.request.urlopen(f"https://api.pushshift.io/reddit/search/submission/?subreddit={subreddit}&size=1000&sort=desc&before=%d"%created_utc_now_sub) as url:
-            data = json.loads(url.read().decode())
-        df_new_sub = pd.DataFrame.from_dict(pd.json_normalize(data['data']), orient='columns')
-        df_sub = df_sub.append(df_new_sub)
-        created_utc_now_sub = df_sub.tail(1)['created_utc']
+    try:
+        while (len(df_sub.index) < min_posts) and (int(created_utc_now_sub) > int(created_utc_first_sub)): 
+            with urllib.request.urlopen(f"https://api.pushshift.io/reddit/search/submission/?subreddit={subreddit}&size=1000&sort=desc&before=%d"%created_utc_now_sub) as url:
+                data = json.loads(url.read().decode())
+            df_new_sub = pd.DataFrame.from_dict(pd.json_normalize(data['data']), orient='columns')
+            df_sub = df_sub.append(df_new_sub)
+            created_utc_now_sub = df_sub.tail(1)['created_utc']
+            df_sub = filter_posts(df_sub)
+            print(len(df_sub))
+    finally:
+        # Clean up the post data that we scraped
         df_sub = filter_posts(df_sub)
-        print(f'        now have {len(df_sub.index)} posts')
-        
-    # Clean up the post data that we scraped
-    df_sub = df_sub.set_index('id')
-    df_sub = df_sub[~df_sub.index.duplicated(keep='first')]
-    df_sub = df_sub[['author', 'author_flair_text', 'created_utc', 'permalink', 'retrieved_on', 
-                     'score', 'subreddit', 'title', 'upvote_ratio', 'url', 'url_overridden_by_dest']]
-    return df_sub
+        df_sub = df_sub.set_index('id')
+        df_sub = df_sub[~df_sub.index.duplicated(keep='first')]
+        df_sub = df_sub[['author', 'author_flair_text', 'created_utc', 'permalink', 'retrieved_on', 
+                         'score', 'subreddit', 'title', 'upvote_ratio', 'url', 'url_overridden_by_dest']]
+        return df_sub
 
 try:
     if os.path.isfile('data/dataset.h5'):
