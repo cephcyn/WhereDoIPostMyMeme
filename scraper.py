@@ -3,6 +3,8 @@ import json
 import pandas as pd
 import numpy as np
 import os
+import pickle
+pickle.HIGHEST_PROTOCOL = 4
 
 # list of subreddits to collect posts from
 sub_list = ['greentext', 'DeepFriedMemes', 'me_irl', '2meirl4meirl', 'dankmemes', 
