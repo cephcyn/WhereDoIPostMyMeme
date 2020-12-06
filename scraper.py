@@ -55,7 +55,7 @@ def scrape_subreddit(min_posts, subreddit):
         df_sub = df_sub.set_index('id')
         df_sub = df_sub[~df_sub.index.duplicated(keep='first')]
         df_sub = df_sub[['author', 'author_flair_text', 'created_utc', 'permalink', 'retrieved_on', 
-                         'score', 'subreddit', 'title', 'upvote_ratio', 'url', 'url_overridden_by_dest']]
+                         'score', 'subreddit', 'title', 'upvote_ratio', 'url']]
         return df_sub
 
 try:
