@@ -71,6 +71,8 @@ try:
             already_scraped = already_scraped.append(pd.Series([sub_name]))
             print(f'     done scraping sub r/{sub_name}')
 finally:
-    print(f'dumping output to file!')
+    print(f'rewriting/dumping output to file!')
+    if os.path.isfile('data/dataset.h5'):
+        os.remove('data/dataset.h5')
     dataset_df.to_hdf('data/dataset.h5', key='df')
     already_scraped.to_hdf('data/dataset.h5', key='contentslist')
