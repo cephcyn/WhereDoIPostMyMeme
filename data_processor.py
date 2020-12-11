@@ -2,7 +2,7 @@ import pandas as pd
 import torch
 from PIL import Image
 from urllib.request import urlopen
-from urllib.error import HTTPError
+from urllib.error import URLError
 from torchvision import transforms
 import pickle
 
@@ -20,7 +20,7 @@ for title, image_url, subreddit in zip(all_post_titles, image_urls,all_subreddit
     print(i)
     try:
         im = Image.open(urlopen(image_url))
-    except HTTPError:
+    except URLError:
         continue
     try:
         im.save("data/images/image_" + str(i), "JPEG")
