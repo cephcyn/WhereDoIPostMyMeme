@@ -42,7 +42,10 @@ def filter_posts(post_df):
     output_df = output_df[output_df.over_18 == False]
     output_df = output_df[output_df.pinned == False]
     output_df = output_df[output_df.score >= 3]
-    output_df = output_df[output_df.url.str.endswith('.jpg', na=False)]
+    output_df = pd.concat([
+        output_df[output_df.url.str.endswith('.jpg', na=False)], 
+        output_df[output_df.url.str.endswith('.png', na=False)]
+    ])
     return output_df
 
 # Collect approximately `min_posts` number of posts (or the total # of posts in subreddit, whichever is smaller)
