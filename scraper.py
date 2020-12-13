@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import os
 import traceback
+import random
 import pickle
 pickle.HIGHEST_PROTOCOL = 4
 
@@ -71,6 +72,8 @@ def scrape_subreddit(min_posts, subreddit, start_utc=None):
     df_sub = pd.DataFrame.from_dict(pd.json_normalize(data['data']), orient='columns')
     if start_utc is None:
         created_utc_now_sub = df_sub.tail(1)['created_utc']
+    elif len(start_utc) != 1:
+        created_utc_now_sub = df_sub.tail(1)['created_utc']
     else:
         created_utc_now_sub = start_utc
     
@@ -78,11 +81,12 @@ def scrape_subreddit(min_posts, subreddit, start_utc=None):
     # but also don't go past the beginning of the subreddit
     try:
         while (len(df_sub.index) < min_posts) and (int(created_utc_now_sub) > int(created_utc_first_sub)): 
-            url = f"https://api.pushshift.io/reddit/search/submission/?subreddit={subreddit}&size=1000&sort=desc&before=%d"%created_utc_now_sub
+            url = f"https://api.pushshift.io/reddit/search/submission/?subreddit={subreddit}&size={random.randint(950, 1000)}&sort=desc&before=%d"%created_utc_now_sub
             with urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})) as url:
                 data = json.loads(url.read().decode())
             df_new_sub = pd.DataFrame.from_dict(pd.json_normalize(data['data']), orient='columns')
             df_sub = df_sub.append(df_new_sub)
+            test_validity = int(df_sub.tail(1)['created_utc'])
             created_utc_now_sub = df_sub.tail(1)['created_utc']
             df_sub = filter_posts(df_sub)
             print(len(df_sub))
