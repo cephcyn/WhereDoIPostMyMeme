@@ -3,6 +3,7 @@ import json
 import pandas as pd
 import numpy as np
 import os
+import traceback
 import pickle
 pickle.HIGHEST_PROTOCOL = 4
 
@@ -44,7 +45,9 @@ def filter_posts(post_df):
     output_df = output_df[output_df.score >= 3]
     output_df = pd.concat([
         output_df[output_df.url.str.endswith('.jpg', na=False)], 
-        output_df[output_df.url.str.endswith('.png', na=False)]
+        output_df[output_df.url.str.endswith('.jpeg', na=False)],
+        output_df[output_df.url.str.endswith('.png', na=False)],
+        output_df[output_df.url.str.endswith('.gif', na=False)],
     ])
     return output_df
 
@@ -83,6 +86,13 @@ def scrape_subreddit(min_posts, subreddit, start_utc=None):
             created_utc_now_sub = df_sub.tail(1)['created_utc']
             df_sub = filter_posts(df_sub)
             print(len(df_sub))
+        if int(created_utc_now_sub) < int(created_utc_first_sub):
+            print('reached sub beginning date')
+            print(created_utc_now_sub)
+            print(created_utc_first_sub)
+    except:
+        print('ERROR')
+        print(traceback.format_exc())
     finally:
         # Clean up the post data that we scraped
         df_sub = filter_posts(df_sub)
@@ -121,6 +131,9 @@ try:
             utc_now_dict[sub_name] = created_utc_now
             dataset_df = pd.concat([dataset_df, scraped_df])
             print(f'     done scraping sub r/{sub_name}')
+except:
+    print('ERROR')
+    print(traceback.format_exc())
 finally:
     print(f'rewriting/dumping output to file!')
     if os.path.isfile(output_filename_df):
