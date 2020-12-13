@@ -8,25 +8,25 @@ pickle.HIGHEST_PROTOCOL = 4
 
 # list of subreddits to collect posts from
 sub_list = [
-    'greentext',             # DONE
-    'DeepFriedMemes',        # DONE
-    'me_irl',                # file0
-    '2meirl4meirl',          # file0
-    'dankmemes',             # file0
-    'adviceanimals',         # file0
-    'dogelore',              # file0
-    'wholesomememes',        # file0
-    'CatsPlayingDnd',        # file1
-    'glitch_art',            # file1
-    'awwnime',               # file1
-    'EarthPorn',             # file1
-    'tumblr',                # file1
-    'NapkinMemes',           # file2
-    'chickenswearingpants',  # file2
-    'BreadStapledToTrees',   # file2
-    'terriblefacebookmemes', # file2
-    'Animemes',              # file2
-    'dataisbeautiful',       # file2
+    'greentext',
+    'DeepFriedMemes',
+    'me_irl',
+    '2meirl4meirl',
+    'dankmemes',
+    'AdviceAnimals',
+    'dogelore',
+    'wholesomememes',
+    'starterpacks',
+    'glitch_art',
+    'awwnime',
+    'EarthPorn',
+    'tumblr',
+    'surrealmemes',
+    'ThingsCutInHalfPorn',
+    'BreadStapledToTrees',
+    'terriblefacebookmemes',
+    'Animemes',
+    'dataisbeautiful',
 ]
 
 # number of posts to collect from each sub
