@@ -1,23 +1,26 @@
 {
   "files": {
-    "main.css": "/WhereDoIPostMyMeme/static/css/main.ab7136cd.chunk.css",
-    "main.js": "/WhereDoIPostMyMeme/static/js/main.14a32094.chunk.js",
-    "main.js.map": "/WhereDoIPostMyMeme/static/js/main.14a32094.chunk.js.map",
-    "runtime-main.js": "/WhereDoIPostMyMeme/static/js/runtime-main.ebf9b84a.js",
-    "runtime-main.js.map": "/WhereDoIPostMyMeme/static/js/runtime-main.ebf9b84a.js.map",
-    "static/js/2.1df4e08e.chunk.js": "/WhereDoIPostMyMeme/static/js/2.1df4e08e.chunk.js",
-    "static/js/2.1df4e08e.chunk.js.map": "/WhereDoIPostMyMeme/static/js/2.1df4e08e.chunk.js.map",
-    "static/js/3.e6390b14.chunk.js": "/WhereDoIPostMyMeme/static/js/3.e6390b14.chunk.js",
-    "static/js/3.e6390b14.chunk.js.map": "/WhereDoIPostMyMeme/static/js/3.e6390b14.chunk.js.map",
+    "main.css": "/WhereDoIPostMyMeme/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/WhereDoIPostMyMeme/static/js/main.d96749d1.chunk.js",
+    "main.js.map": "/WhereDoIPostMyMeme/static/js/main.d96749d1.chunk.js.map",
+    "runtime-main.js": "/WhereDoIPostMyMeme/static/js/runtime-main.c5c9108b.js",
+    "runtime-main.js.map": "/WhereDoIPostMyMeme/static/js/runtime-main.c5c9108b.js.map",
+    "static/css/2.c931b71a.chunk.css": "/WhereDoIPostMyMeme/static/css/2.c931b71a.chunk.css",
+    "static/js/2.502a80a4.chunk.js": "/WhereDoIPostMyMeme/static/js/2.502a80a4.chunk.js",
+    "static/js/2.502a80a4.chunk.js.map": "/WhereDoIPostMyMeme/static/js/2.502a80a4.chunk.js.map",
+    "static/js/3.8f2ca700.chunk.js": "/WhereDoIPostMyMeme/static/js/3.8f2ca700.chunk.js",
+    "static/js/3.8f2ca700.chunk.js.map": "/WhereDoIPostMyMeme/static/js/3.8f2ca700.chunk.js.map",
     "index.html": "/WhereDoIPostMyMeme/index.html",
-    "static/css/main.ab7136cd.chunk.css.map": "/WhereDoIPostMyMeme/static/css/main.ab7136cd.chunk.css.map",
-    "static/js/2.1df4e08e.chunk.js.LICENSE.txt": "/WhereDoIPostMyMeme/static/js/2.1df4e08e.chunk.js.LICENSE.txt",
-    "static/media/logo.6ce24c58.svg": "/WhereDoIPostMyMeme/static/media/logo.6ce24c58.svg"
+    "static/css/2.c931b71a.chunk.css.map": "/WhereDoIPostMyMeme/static/css/2.c931b71a.chunk.css.map",
+    "static/css/main.6dea0f05.chunk.css.map": "/WhereDoIPostMyMeme/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.502a80a4.chunk.js.LICENSE.txt": "/WhereDoIPostMyMeme/static/js/2.502a80a4.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/WhereDoIPostMyMeme/static/media/roboto-vietnamese-400-normal.52cebac0.woff2"
   },
   "entrypoints": [
-    "static/js/runtime-main.ebf9b84a.js",
-    "static/js/2.1df4e08e.chunk.js",
-    "static/css/main.ab7136cd.chunk.css",
-    "static/js/main.14a32094.chunk.js"
+    "static/js/runtime-main.c5c9108b.js",
+    "static/css/2.c931b71a.chunk.css",
+    "static/js/2.502a80a4.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.d96749d1.chunk.js"
   ]
 }
