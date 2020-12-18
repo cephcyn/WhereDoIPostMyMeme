@@ -1,4 +1,7 @@
 # MemeNet: multimodal models make meme market manageable
+
+View the demo page here! https://cephcyn.github.io/WhereDoIPostMyMeme
+
 ## Problem Statement
 Artificial Intelligence (A.I.) has been applied in areas such as economics and algorithmic trading to great effect. In recent decades, the rise of viral Internet culture has led to the development of a new global economy: the online "meme economy". Drawing from scarce resources (such as creativity, humor, and time), individual producers (meme makers) offer their goods (memes in the form of multimodal ideas) over a centralized marketplace (Internet forums such as subreddits on Reddit) in exchange for currency (Internet points such as Upvotes or Likes). Oftentimes, knowing *where* to post a meme can greatly affect how well it is received by the Internet community. Posting in a highly apt channel can lead to instant Internet fame, while posting in a suboptimal channel can lead to one's creative work failing to gain attention, or worse, being stolen and reposted by meme thieves. Additionally, posting the same content in several different channels can be considered "spamming" and is negatively regarded. To make this decision easier for the millions of meme creators on the Internet, **we developed a multimodal neural network to predict the single best subreddit that a given meme should be posted to for maximum profit**.
 
@@ -25,12 +28,3 @@ Deep neural networks are excellent at learning from data that consists of single
 
 ## Examples
 [TODO]
-
-
-
-
-
-
-Dependencies:
-* Pandas
-* (TODO create an environment.yml for this project)
