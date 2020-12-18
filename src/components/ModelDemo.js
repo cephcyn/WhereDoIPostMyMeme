@@ -34,25 +34,25 @@ export default function ModelDemo() {
   const [loaded, setLoaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const startLoadModel = async () => {
-      if (isLoading || loaded) { return; }
-      setIsLoading(true);
-      await loadModel(session);
-      setLoaded(true);
-      setIsLoading(false);
+    if (isLoading || loaded) { return; }
+    setIsLoading(true);
+    await loadModel(session);
+    setLoaded(true);
+    setIsLoading(false);
   }
 
   const [file, setFile] = useState(null)
   const canvas = useRef(null)
   const [data, setData] = useState(null)
   useEffect(() => {
-      if (file) fetchImage(file, canvas, setData);
+    if (file) fetchImage(file, canvas, setData);
   }, [file])
 
   const [outputMap, setOutputMap] = useState(null);
 
   useEffect(() => {
-      if (!loaded || !data) return;
-      runModel(session, data, setOutputMap);
+    if (!loaded || !data) return;
+    runModel(session, data, setOutputMap);
   }, [loaded, data]); // runs when loaded or data changes
   const outputData = outputMap && outputMap.values().next().value.data;
 
