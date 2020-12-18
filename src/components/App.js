@@ -1,11 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
 import 'react-aspect-ratio/aspect-ratio.css'
@@ -13,6 +10,8 @@ import AspectRatio from 'react-aspect-ratio';
 import Carousel from 'react-material-ui-carousel'
 
 import "fontsource-roboto"
+
+import ModelDemo from './ModelDemo'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,16 +33,6 @@ const useStyles = makeStyles((theme) => ({
     padding: '10px 30px',
     marginTop: '15px',
     marginBottom: '15px',
-  },
-  shiny: {
-    // I wonder if I can randomize the color lmao
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-    border: 0,
-    borderRadius: 3,
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    color: 'white',
-    height: 48,
-    padding: '0 30px',
   },
 }));
 
@@ -96,7 +85,7 @@ export default function App() {
         <Typography variant="h4" style={{ textAlign:'center' }} gutterBottom>
           Examples
         </Typography>
-        <div style={{ maxWidth: '80%', position: 'relative', left: '50%', transform: 'translate(-50%, 0)' }}>
+        <Container>
           <Carousel
             autoPlay={false}
             animation={"slide"}
@@ -137,15 +126,15 @@ export default function App() {
               ]
             }
           </Carousel>
-        </div>
+        </Container>
       </Paper>
       <Paper className={classes.panel}>
         <Typography variant="h4" style={{ textAlign:'center' }} gutterBottom>
           Try It Yourself!
         </Typography>
-        <Button className={classes.shiny}>
-          Hello World
-        </Button>
+        <Container>
+          <ModelDemo />
+        </Container>
       </Paper>
       <Paper className={classes.panel}>
         <Typography variant="h4" style={{ textAlign:'center' }} gutterBottom>
