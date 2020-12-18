@@ -9,7 +9,7 @@ To redeploy the app:
 - Make whatever changes, commit, and then run `npm run deploy`
 - (To preview the app, just run `npm start` as mentioned below)
 
-Demo design inspired by https://github.com/davidpfahler/react-ml-app
+Demo design SUBSTANTIALLY inspired by https://github.com/davidpfahler/react-ml-app
 
 # Getting Started with Create React App
 
