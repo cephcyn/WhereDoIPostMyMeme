@@ -25,10 +25,10 @@ body {
 }
 
 .text-block-2 {
-	margin-right: 50px;
-	margin-left: 50px;
-	padding-top: 192px;
-	padding-bottom: 192px;
+	margin-right: 3%;
+	margin-left: 3%;
+	padding-top: 120px;
+	padding-bottom: 120px;
 	background-color: #fc7d7d;
 	text-align: center;
 }
