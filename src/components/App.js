@@ -29,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
     transform: 'translate(-50%, 0)',
     maxWidth: '80%',
   },
+  memetitletext: {
+    fontFamily: 'Comic Sans MS, Comic Sans, Comic Neue, cursive',
+  },
   detailtext: {
     padding: '10px 30px',
     marginTop: '15px',
@@ -42,10 +45,10 @@ export default function App() {
     <Container className={classes.root}>
       <CssBaseline />
       <Paper className={classes.panel} style={{ textAlign:'center' }}>
-        <Typography variant="h1">
+        <Typography variant="h1" className={classes.memetitletext}>
           MemeNet
         </Typography>
-        <Typography variant="h4">
+        <Typography variant="h4" className={classes.memetitletext}>
           Multimodal Models Make Meme Market Manageable
         </Typography>
       </Paper>
