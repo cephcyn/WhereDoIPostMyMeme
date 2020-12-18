@@ -1,3 +1,14 @@
+# Notes
+
+Branch and github pages initialized using [this tutorial](https://github.com/gitname/react-gh-pages). Additional comments:
+- Instead of starting from an empty repository, created new branch gh-pages-source BEFORE starting, then created new React app and copied contents of React app into gh-pages-source.
+- Then followed the rest of the tutorial, skipping any mention of initializing a Git repository.
+
+To redeploy the app:
+- Clone this repository and switch to gh-pages-source branch
+- Make whatever changes, commit, and then run `npm run deploy`
+- (To preview the app, just run `npm start` as mentioned below)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
