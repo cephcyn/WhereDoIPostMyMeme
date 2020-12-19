@@ -16,28 +16,41 @@ const session = makeSession();
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    background: '#DDDDDD',
     padding: '15px 30px',
   },
   submit: {
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    background: 'linear-gradient(45deg, #d08771, #c85b85)',
+    backgroundSize: '200% 200%',
     border: 0,
     borderRadius: 3,
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .1)',
     color: 'white',
     height: 48,
     padding: '0 30px',
   },
   shiny: {
     // I wonder if I can randomize the color lmao
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    background: 'linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)',
+    backgroundSize: '400% 400%',
+    animation: '$gradient 15s ease infinite',
     border: 0,
     borderRadius: 3,
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .8)',
     color: 'white',
     height: 48,
     padding: '0 30px',
   },
+  '@keyframes gradient': {
+  	'0%': {
+  		'background-position': '0% 50%',
+  	},
+  	'50%': {
+  		'background-position': '100% 50%',
+  	},
+  	'100%': {
+  		'background-position': '0% 50%',
+  	},
+  }
 }));
 
 export default function ModelDemo() {
@@ -99,7 +112,7 @@ export default function ModelDemo() {
           { loaded && !file && (<Button className={`${classes.submit}`}>Need to upload image</Button>) }
           { loaded && file && !imgData && (<Button className={`${classes.submit}`}>Loading image...</Button>) }
           { loaded && file && imgData && !(textData.length>0) && (<Button className={`${classes.submit}`}>Need to add text</Button>) }
-          { loaded && file && imgData && (textData.length>0) && !startedRun && (<Button className={`${classes.submit}`} onClick={startRunModel}>WHERE SHOULD I POST THIS?</Button>) }
+          { loaded && file && imgData && (textData.length>0) && !startedRun && (<Button className={`${classes.submit} ${classes.shiny}`} onClick={startRunModel}>WHERE SHOULD I POST THIS?</Button>) }
           { loaded && startedRun && (<Button className={`${classes.submit}`}>Running model...</Button>) }
         </Grid>
         <Grid item xs={12}>

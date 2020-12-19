@@ -40,6 +40,22 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '15px',
     marginBottom: '15px',
   },
+  shinypanel: {
+    background: 'linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)',
+    backgroundSize: '400% 400%',
+    animation: '$gradient 15s ease infinite',
+  },
+  '@keyframes gradient': {
+  	'0%': {
+  		'background-position': '0% 50%',
+  	},
+  	'50%': {
+  		'background-position': '100% 50%',
+  	},
+  	'100%': {
+  		'background-position': '0% 50%',
+  	},
+  }
 }));
 
 export default function App() {
@@ -57,7 +73,7 @@ export default function App() {
   return (
     <Container className={classes.root}>
       <CssBaseline />
-      <Paper className={classes.panel} style={{ textAlign:'center' }}>
+      <Paper className={`${classes.panel} ${classes.shinypanel}`} style={{ textAlign:'center' }}>
         <Typography variant="h1" className={classes.memetitletext}>
           MemeNet
         </Typography>
@@ -144,13 +160,15 @@ export default function App() {
           </Carousel>
         </Container>
       </Paper>
-      <Paper className={classes.panel}>
+      <Paper className={`${classes.panel} ${classes.shinypanel}`}>
         <Typography variant="h4" style={{ textAlign:'center' }} gutterBottom>
           Try It Yourself!
         </Typography>
-        <Container>
-          <ModelDemo />
-        </Container>
+        <Paper style={{ background: '#DDDDDD' }}>
+          <Container>
+            <ModelDemo />
+          </Container>
+        </Paper>
       </Paper>
       <Paper className={classes.panel}>
         <Typography variant="h4" style={{ textAlign:'center' }} gutterBottom>
@@ -243,7 +261,7 @@ export default function App() {
           blah Blah blaaah Blaaah Bla bla Blahbla bla blah blaah blah blaaah Blaaah
         </Typography>
       </Paper>
-      <Paper className={classes.panel}>
+      <Paper className={`${classes.panel} ${classes.shinypanel}`}>
         <Container style={{ width:"40%" }}>
           <Image
             src={imgLeo}
