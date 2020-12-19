@@ -9,7 +9,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import DropImageCard from './DropImageCard'
 import Predictions from './Predictions'
-import {InfoSnackbar, LoadingSnackbar } from './Snackbars'
 import { fetchImage, makeSession, loadModel, runModel } from './utils'
 
 const session = makeSession();
@@ -17,6 +16,11 @@ const session = makeSession();
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: '15px 30px',
+  },
+  demoElement: {
+    marginTop: '10px',
+    marginBottom: '10px',
+    width: '100%',
   },
   submit: {
     background: 'linear-gradient(45deg, #d08771, #c85b85)',
@@ -33,12 +37,7 @@ const useStyles = makeStyles((theme) => ({
     background: 'linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)',
     backgroundSize: '400% 400%',
     animation: '$gradient 15s ease infinite',
-    border: 0,
-    borderRadius: 3,
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .8)',
-    color: 'white',
-    height: 48,
-    padding: '0 30px',
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .5)',
   },
   '@keyframes gradient': {
   	'0%': {
@@ -79,44 +78,40 @@ export default function ModelDemo() {
   const [startedRun, setStartedRun] = useState(null);
   const [outputMap, setOutputMap] = useState(null);
   const startRunModel = async () => {
-    if (!loaded || !imgData || !(textData.length>0)) return;
-    setStartedRun(true);
+    // if (!loaded || !imgData || !(textData.length>0)) return;
+    // setStartedRun(true);
     console.log('clicked start button!');
     console.log('image data: ')
     console.log(imgData);
     console.log('text data: '+textData);
-    console.log('startRunModel '+setOutputMap);
-    runModel(session, imgData, textData, setOutputMap);
-    console.log('done running');
-    setStartedRun(false);
+    // runModel(session, imgData, textData, setOutputMap);
   };
   useEffect(() => {
     if (!loaded) return;
     setStartedRun(false);
-  }, [outputMap, file, imgData, textData]); // runs when loaded or data changes
+  }, [outputMap, imgData, textData]); // runs when loaded or data changes
   const outputData = outputMap && outputMap.values().next().value.data;
 
   const classes = useStyles();
   return (
     <Container className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <DropImageCard setFile={setFile} canvasRef={canvas} fileLoaded={!!file} />
+        <Grid item xs={4}>
+          <Button className={`${classes.demoElement} ${classes.submit} ${classes.shiny}`} onClick={startRunModel}>TODO use CONSOLE, DELETE LATER</Button>
+          { !loaded && !isLoading && (<Button className={`${classes.demoElement} ${classes.submit}`} onClick={startLoadModel}>Load model (TODO 40 MB)</Button>) }
+          { !loaded && isLoading && (<Button className={`${classes.demoElement} ${classes.submit}`}>Loading model...</Button>) }
+          { loaded && !file && (<Button className={`${classes.demoElement} ${classes.submit}`}>Need to upload image</Button>) }
+          { loaded && file && !imgData && (<Button className={`${classes.demoElement} ${classes.submit}`}>Loading image...</Button>) }
+          { loaded && file && imgData && !(textData.length>0) && (<Button className={`${classes.demoElement} ${classes.submit}`}>Need to add text</Button>) }
+          { loaded && file && imgData && (textData.length>0) && !startedRun && (<Button className={`${classes.demoElement} ${classes.submit} ${classes.shiny}`} onClick={startRunModel}>WHERE SHOULD I POST THIS?</Button>) }
+          { loaded && startedRun && (<Button className={`${classes.demoElement} ${classes.submit}`}>Running model...</Button>) }
+          <Predictions output={outputData} className={classes.demoElement} />
         </Grid>
-        <Grid item xs={12}>
-          <TextField id="outlined-basic" label="Meme Title" variant="outlined" value={textData} onChange={handleTextChange} />
-        </Grid>
-        <Grid item xs={12}>
-          { !loaded && !isLoading && (<Button className={`${classes.submit}`} onClick={startLoadModel}>Load model (TODO 40 MB)</Button>) }
-          { !loaded && isLoading && (<Button className={`${classes.submit}`}>Loading model...</Button>) }
-          { loaded && !file && (<Button className={`${classes.submit}`}>Need to upload image</Button>) }
-          { loaded && file && !imgData && (<Button className={`${classes.submit}`}>Loading image...</Button>) }
-          { loaded && file && imgData && !(textData.length>0) && (<Button className={`${classes.submit}`}>Need to add text</Button>) }
-          { loaded && file && imgData && (textData.length>0) && !startedRun && (<Button className={`${classes.submit} ${classes.shiny}`} onClick={startRunModel}>WHERE SHOULD I POST THIS?</Button>) }
-          { loaded && startedRun && (<Button className={`${classes.submit}`}>Running model...</Button>) }
-        </Grid>
-        <Grid item xs={12}>
-          <Predictions output={outputData} />
+        <Grid item xs={8}>
+          <div style={{ display:'inline-block', position: 'relative', left: '50%', transform: 'translate(-50%, 0)' }}>
+            <DropImageCard setFile={setFile} canvasRef={canvas} fileLoaded={!!file} className={classes.demoElement} />
+          </div>
+          <TextField id="outlined-basic" label="Meme Title" variant="outlined" value={textData} onChange={handleTextChange} className={classes.demoElement} />
         </Grid>
       </Grid>
     </Container>

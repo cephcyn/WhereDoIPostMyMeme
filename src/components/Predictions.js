@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './classes'
 import Scorecard from './Scorecard';
-import {getBreedImg, getBreed} from './utils';
+import { getImg, getLabelName } from './utils';
 
 const getTopK = (acts, k) => {
     const topK = Array.from(acts)
@@ -17,7 +17,7 @@ const getTopK = (acts, k) => {
     // denominator of softmax function
     const denominator = acts.map(y => Math.exp(y)).reduce((a,b) => a+b)
     return topK.map(([act, i], _, acts) => ({
-        breed: classes[i],
+        subID: classes[i],
         act,
         prob: Math.exp(act) / denominator,
     }));
@@ -25,10 +25,10 @@ const getTopK = (acts, k) => {
 
 export default function Predictions({output}) {
     if (!output) return null;
-    const items = getTopK(output, 5).map(({breed, prob}) => ({
-        name: getBreed(breed),
+    const items = getTopK(output, 5).map(({subID, prob}) => ({
+        name: getLabelName(subID),
         percentage: (prob * 100).toFixed(2),
-        avatar: getBreedImg(breed),
+        avatar: getImg(getLabelName(subID)),
     }));
     return <Scorecard items={items} />;
 }

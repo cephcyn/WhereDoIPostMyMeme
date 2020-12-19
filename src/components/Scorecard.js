@@ -11,8 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
     card: {
-        width: 299,
-        height: 299,
+        height: 'auto',
     },
     item: {
         paddingTop: 10,

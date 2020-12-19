@@ -4,18 +4,15 @@ import ndarray from 'ndarray';
 import ops from 'ndarray-ops';
 import model from '../dogs-resnet18.onnx';
 
-// const model_url = 'https://homes.cs.washington.edu/~jyzhou15/mobilenetv2-7.onnx'
+const model_url = 'https://homes.cs.washington.edu/~jyzhou15/mobilenetv2-7.onnx'
 // const model_url = '../mobilenetv2-7.onnx'
 
-export const getBreed = className => className.split('_').map(p => {
+export const getLabelName = className => className.split('_').map(p => {
   return p.charAt(0).toUpperCase() + p.slice(1)
 }).join(' ')
 
-export const getBreedImg = className => {
-  const breed = className.split('_').map(p => {
-    return p.charAt(0).toLowerCase() + p.slice(1).toLowerCase()
-  }).join('_')
-  return `${process.env.PUBLIC_URL}/images/${breed}.jpg`
+export const getImg = (labelName) => {
+  return 'https://i.redd.it/vb4uq6nipk251.jpg'
 }
 
 export const makeSession = (() => {
@@ -42,7 +39,8 @@ async function warmupModel(session) {
 }
 
 export async function loadModel(session) {
-  await session.loadModel(model);
+  // TODO replace with load model
+  await session.loadModel(model_url);
   await warmupModel(session);
 }
 
@@ -56,17 +54,17 @@ async function _runModel(session, imgInput, textInput, setOutputMap) {
   const imgInputTensor = new Tensor(data, 'float32', [1, 3, width, height]);
   // await wait(0);
   const outputMap = await session.run([imgInputTensor]);
-  console.log('_runModel '+setOutputMap);
   setOutputMap(outputMap);
 }
 
 export function runModel(session, imgInput, textInput, setOutputMap) {
-  console.log('runModel '+setOutputMap);
   setTimeout(() => _runModel(session, imgInput, textInput, setOutputMap), 10);
 }
 
 // borrowed from onnx.js example: https://github.com/microsoft/onnxjs/blob/4085b7e61804d093e36af6a456d8c14c329f0a0a/examples/browser/resnet50/index.js#L29
 const preprocess = input => {
+  // rescale images to 3x256x256
+  console.log(input)
   const {
     data,
     width,
@@ -86,6 +84,8 @@ const preprocess = input => {
   ops.divseq(dataProcessedTensor.pick(0, 0, null, null), 0.229);
   ops.divseq(dataProcessedTensor.pick(0, 1, null, null), 0.224);
   ops.divseq(dataProcessedTensor.pick(0, 2, null, null), 0.225);
+
+  console.log(dataProcessedTensor);
 
   return dataProcessedTensor.data;
 }
@@ -116,5 +116,8 @@ export const fetchImage = async (url, canvas, setData) => {
   ctx.drawImage(img, 0, 0);
   await wait(1);
   const data = ctx.getImageData(0, 0, canvas.current.width, canvas.current.height);
+  console.log('in fetchImage,');
+  console.log(canvas.current.width+' '+canvas.current.height)
+  console.log(data)
   setData(data);
 };

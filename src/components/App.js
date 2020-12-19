@@ -164,7 +164,7 @@ export default function App() {
         <Typography variant="h4" style={{ textAlign:'center' }} gutterBottom>
           Try It Yourself!
         </Typography>
-        <Paper style={{ background: '#DDDDDD' }}>
+        <Paper style={{ background: '#EBEBEB' }}>
           <Container>
             <ModelDemo />
           </Container>
