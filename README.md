@@ -21,6 +21,9 @@ Additional implementation background reading:
 - https://github.com/Microsoft/onnxjs-demo
 - https://heartbeat.fritz.ai/building-an-image-recognition-app-using-onnx-js-c7147f4f291b
 
+CORS info:
+- https://stackoverflow.com/questions/26416727/cross-origin-resource-sharing-on-github-pages
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
