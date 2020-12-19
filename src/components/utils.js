@@ -39,7 +39,8 @@ async function warmupModel(session) {
 }
 
 export async function loadModel(session) {
-  // TODO replace with load model
+  // TODO swap out on deploying?
+  // await session.loadModel(model);
   await session.loadModel(model_url);
   await warmupModel(session);
 }
@@ -63,7 +64,7 @@ export function runModel(session, imgInput, textInput, setOutputMap) {
 
 // borrowed from onnx.js example: https://github.com/microsoft/onnxjs/blob/4085b7e61804d093e36af6a456d8c14c329f0a0a/examples/browser/resnet50/index.js#L29
 const preprocess = input => {
-  // rescale images to 3x256x256
+  // rescale images to 3x256x256 TODO...
   console.log(input)
   const {
     data,

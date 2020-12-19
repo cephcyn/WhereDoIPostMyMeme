@@ -67,8 +67,10 @@ export default function ModelDemo() {
   const canvas = useRef(null)
   const [imgData, setImgData] = useState(null)
   useEffect(() => {
-        if (file) fetchImage(file, canvas, setImgData);
-    }, [file])
+    console.log('file updated');
+    console.log(file);
+    if (file) fetchImage(file, canvas, setImgData);
+  }, [file])
 
   const [textData, setTextData] = useState("")
   const handleTextChange = (event) => {

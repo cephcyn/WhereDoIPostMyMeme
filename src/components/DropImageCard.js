@@ -37,8 +37,6 @@ export default function DropImageCard({setFile, canvasRef, fileLoaded}) {
     if (!file.type.startsWith('image')) {
       return console.log('File must be an image');
     }
-    console.log('uploaded pic');
-    console.log(file);
     setFile(file);
   }, [setFile])
   const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
