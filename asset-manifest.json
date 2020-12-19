@@ -1,28 +1,34 @@
 {
   "files": {
     "main.css": "/WhereDoIPostMyMeme/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/WhereDoIPostMyMeme/static/js/main.7bdf05aa.chunk.js",
-    "main.js.map": "/WhereDoIPostMyMeme/static/js/main.7bdf05aa.chunk.js.map",
+    "main.js": "/WhereDoIPostMyMeme/static/js/main.d16d324b.chunk.js",
+    "main.js.map": "/WhereDoIPostMyMeme/static/js/main.d16d324b.chunk.js.map",
     "runtime-main.js": "/WhereDoIPostMyMeme/static/js/runtime-main.be4159d4.js",
     "runtime-main.js.map": "/WhereDoIPostMyMeme/static/js/runtime-main.be4159d4.js.map",
     "static/css/2.c931b71a.chunk.css": "/WhereDoIPostMyMeme/static/css/2.c931b71a.chunk.css",
-    "static/js/2.7c81da09.chunk.js": "/WhereDoIPostMyMeme/static/js/2.7c81da09.chunk.js",
-    "static/js/2.7c81da09.chunk.js.map": "/WhereDoIPostMyMeme/static/js/2.7c81da09.chunk.js.map",
+    "static/js/2.c2ea0501.chunk.js": "/WhereDoIPostMyMeme/static/js/2.c2ea0501.chunk.js",
+    "static/js/2.c2ea0501.chunk.js.map": "/WhereDoIPostMyMeme/static/js/2.c2ea0501.chunk.js.map",
     "static/js/3.355e30d0.chunk.js": "/WhereDoIPostMyMeme/static/js/3.355e30d0.chunk.js",
     "static/js/3.355e30d0.chunk.js.map": "/WhereDoIPostMyMeme/static/js/3.355e30d0.chunk.js.map",
     "index.html": "/WhereDoIPostMyMeme/index.html",
     "static/css/2.c931b71a.chunk.css.map": "/WhereDoIPostMyMeme/static/css/2.c931b71a.chunk.css.map",
     "static/css/main.6dea0f05.chunk.css.map": "/WhereDoIPostMyMeme/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.7c81da09.chunk.js.LICENSE.txt": "/WhereDoIPostMyMeme/static/js/2.7c81da09.chunk.js.LICENSE.txt",
+    "static/js/2.c2ea0501.chunk.js.LICENSE.txt": "/WhereDoIPostMyMeme/static/js/2.c2ea0501.chunk.js.LICENSE.txt",
+    "static/media/example-awwnime.c9577563.png": "/WhereDoIPostMyMeme/static/media/example-awwnime.c9577563.png",
+    "static/media/example-dogelore.7de12bf1.png": "/WhereDoIPostMyMeme/static/media/example-dogelore.7de12bf1.png",
+    "static/media/example-tumblr.88a44889.png": "/WhereDoIPostMyMeme/static/media/example-tumblr.88a44889.png",
+    "static/media/model_chart.56d9d808.png": "/WhereDoIPostMyMeme/static/media/model_chart.56d9d808.png",
     "static/media/motivational-leo-v1.ef976b8d.png": "/WhereDoIPostMyMeme/static/media/motivational-leo-v1.ef976b8d.png",
     "static/media/motivational-leo-v2.7c71dc7b.png": "/WhereDoIPostMyMeme/static/media/motivational-leo-v2.7c71dc7b.png",
-    "static/media/index.css": "/WhereDoIPostMyMeme/static/media/roboto-vietnamese-400-normal.52cebac0.woff2"
+    "static/media/index.css": "/WhereDoIPostMyMeme/static/media/roboto-vietnamese-400-normal.52cebac0.woff2",
+    "static/media/stats-image.5285c4b1.png": "/WhereDoIPostMyMeme/static/media/stats-image.5285c4b1.png",
+    "static/media/stats-language.e8c3434a.png": "/WhereDoIPostMyMeme/static/media/stats-language.e8c3434a.png"
   },
   "entrypoints": [
     "static/js/runtime-main.be4159d4.js",
     "static/css/2.c931b71a.chunk.css",
-    "static/js/2.7c81da09.chunk.js",
+    "static/js/2.c2ea0501.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.7bdf05aa.chunk.js"
+    "static/js/main.d16d324b.chunk.js"
   ]
 }
