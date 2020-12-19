@@ -3,6 +3,7 @@ import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
 import 'react-aspect-ratio/aspect-ratio.css'
@@ -40,6 +41,17 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '15px',
     marginBottom: '15px',
   },
+  shinybutton: {
+    background: 'linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)',
+    backgroundSize: '400% 400%',
+    animation: '$gradient 15s ease infinite',
+    border: 0,
+    borderRadius: 3,
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .5)',
+    color: 'white',
+    height: 48,
+    padding: '0 30px',
+  },
   shinypanel: {
     background: 'linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)',
     backgroundSize: '400% 400%',
@@ -63,7 +75,7 @@ export default function App() {
 
   const [imgLeo, setImgLeo] = useState(motivationalLeo1)
   const toggleLeo = (event) => {
-    if (imgLeo==motivationalLeo1) {
+    if (imgLeo===motivationalLeo1) {
       setImgLeo(motivationalLeo2);
     } else {
       setImgLeo(motivationalLeo1);
@@ -164,11 +176,17 @@ export default function App() {
         <Typography variant="h4" style={{ textAlign:'center' }} gutterBottom>
           Try It Yourself!
         </Typography>
-        <Paper style={{ background: '#EBEBEB' }}>
-          <Container>
-            <ModelDemo />
-          </Container>
-        </Paper>
+        {/* The built-in demo is not currently working, so I'm just linking to public Colab file. */}
+        {
+        // <Paper style={{ background: '#EBEBEB' }}>
+        //   <Container>
+        //     <ModelDemo />
+        //   </Container>
+        // </Paper>
+        }
+        <Container style={{ textAlign:'center' }}>
+          <Button className={classes.shinybutton} href="https://colab.research.google.com/drive/1139WDXzKaWsXPr2rUKzH5Vt8C8ZnFA9k">Check it out on Google Colab</Button>
+        </Container>
       </Paper>
       <Paper className={classes.panel}>
         <Typography variant="h4" style={{ textAlign:'center' }} gutterBottom>
@@ -265,6 +283,7 @@ export default function App() {
         <Container style={{ width:"40%" }}>
           <Image
             src={imgLeo}
+            alt="Leo DiCaprio numpy meme (credits: Will Chen)"
             color="transparent"
             onClick={toggleLeo}
             style={{ height:"100px" }}

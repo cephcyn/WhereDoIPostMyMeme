@@ -2,10 +2,10 @@ import loadImage from 'blueimp-load-image';
 import { Tensor, InferenceSession } from 'onnxjs';
 import ndarray from 'ndarray';
 import ops from 'ndarray-ops';
-import model from '../dogs-resnet18.onnx';
+// import model from '../dogs-resnet18.onnx';
 
-const model_url = 'https://homes.cs.washington.edu/~jyzhou15/mobilenetv2-7.onnx'
-// const model_url = '../mobilenetv2-7.onnx'
+const model_url = 'https://github.com/davidpfahler/react-ml-app/raw/master/src/dogs-resnet18.onnx'
+// const model_url = '../dogs-resnet18.onnx'
 
 export const getLabelName = className => className.split('_').map(p => {
   return p.charAt(0).toUpperCase() + p.slice(1)
