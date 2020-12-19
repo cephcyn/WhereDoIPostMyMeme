@@ -115,6 +115,32 @@ export default function App() {
           given meme should be posted to for maximum profit</strong>.
         </Typography>
       </Paper>
+      <Paper className={classes.detailtext}>
+        <Typography variant="h4" style={{ textAlign:'center' }} gutterBottom>
+          Abstract
+        </Typography>
+        <Typography>
+          Deep neural networks are excellent at learning from data that consists
+          of single modalities. For example, convolutional neural networks are
+          highly performant on image classification, and sequence models are the
+          state-of-the-art for text generation. However, media such as Internet
+          memes often consist of multiple modalities. A meme may have an image
+          component and a text component, each of which contribute information
+          about what the meme is trying to convey. To extract features from
+          multimodal data, we leverage multimodal deep learning, in which we use
+          multiple feature extractor networks to learn the separate modes
+          individually, and an aggregator network to combine the features to
+          produce the final output classification. We scrape Reddit meme
+          subreddits for post data, including: subreddit name, upvote/downvote
+          count, images, meme text via OCR (or human OCR), and post titles. We
+          construct a train and test set and evaluate results using a
+          precision/accuracy measure for subreddit name predictions. To optimize
+          our model, we use FAIR’s open source multimodal library, Pythia/MMF
+          (<a href="https://mmf.sh/" rel="nofollow">https://mmf.sh/</a>), and try
+          a variety of model architectures and hyperparameters. Finally, we include
+          our best model for demonstration purposes.
+        </Typography>
+      </Paper>
       <Paper className={classes.panel} style={{ textAlign:'center' }}>
         <AspectRatio ratio="16 / 9" style={{ maxWidth: '60%', left: '50%', transform: 'translate(-50%, 0)' }}>
           <iframe
@@ -141,30 +167,21 @@ export default function App() {
             {
               [
                 <Paper className={classes.examplecard}>
-                  <Typography>
-                    PAGE 1:
-                  </Typography>
                   <img
-                    style={{ width:'256px', 'height':'256px' }}
-                    src="https://i.pinimg.com/474x/7c/4d/15/7c4d1533480bb4c5911d95699fef5186.jpg"
+                    style={{ width:'500px', 'height':'300px' }}
+                    src="../img/example-awwnime.png"
                   />
                 </Paper>,
                 <Paper className={classes.examplecard}>
-                  <Typography>
-                    PAGE 2:
-                  </Typography>
                   <img
-                    style={{ width:'256px', 'height':'256px' }}
-                    src="https://i.pinimg.com/474x/1b/e4/94/1be494c3c065c9c97da3231f7303ee85.jpg"
+                    style={{ width:'500px', 'height':'300px' }}
+                    src="../img/example-tumblr.png"
                   />
                 </Paper>,
                 <Paper className={classes.examplecard}>
-                  <Typography>
-                    PAGE 3:
-                  </Typography>
                   <img
-                    style={{ width:'256px', 'height':'256px' }}
-                    src="https://i.pinimg.com/564x/32/58/ba/3258bafbefbc616c5736347001d9bb15.jpg"
+                    style={{ width:'500px', 'height':'300px' }}
+                    src="../img/example-dogelore.png"
                   />
                 </Paper>
               ]
@@ -192,32 +209,7 @@ export default function App() {
         <Typography variant="h4" style={{ textAlign:'center' }} gutterBottom>
           Behind The Scenes
         </Typography>
-        <Paper className={classes.detailtext}>
-          <Typography variant="h5" style={{ textAlign:'center' }} gutterBottom>
-            Abstract
-          </Typography>
-          <Typography>
-            Deep neural networks are excellent at learning from data that consists
-            of single modalities. For example, convolutional neural networks are
-            highly performant on image classification, and sequence models are the
-            state-of-the-art for text generation. However, media such as Internet
-            memes often consist of multiple modalities. A meme may have an image
-            component and a text component, each of which contribute information
-            about what the meme is trying to convey. To extract features from
-            multimodal data, we leverage multimodal deep learning, in which we use
-            multiple feature extractor networks to learn the separate modes
-            individually, and an aggregator network to combine the features to
-            produce the final output classification. We scrape Reddit meme
-            subreddits for post data, including: subreddit name, upvote/downvote
-            count, images, meme text via OCR (or human OCR), and post titles. We
-            construct a train and test set and evaluate results using a
-            precision/accuracy measure for subreddit name predictions. To optimize
-            our model, we use FAIR’s open source multimodal library, Pythia/MMF
-            (<a href="https://mmf.sh/" rel="nofollow">https://mmf.sh/</a>), and try
-            a variety of model architectures and hyperparameters. Finally, we include
-            our best model for demonstration purposes.
-          </Typography>
-        </Paper>
+
         <Paper className={classes.detailtext}>
           <Typography variant="h5" style={{ textAlign:'center' }} gutterBottom>
             Methodology
