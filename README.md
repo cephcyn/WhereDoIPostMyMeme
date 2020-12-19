@@ -13,6 +13,14 @@ Demo design SUBSTANTIALLY inspired by:
 - https://davidpfahler.com/fastai-in-the-browser
 - https://github.com/davidpfahler/react-ml-app
 
+Additional implementation background reading:
+- https://medium.com/datadriveninvestor/running-your-deep-learning-models-in-a-browser-using-tensorflow-js-and-onnx-js-a35256d3933
+- https://towardsdatascience.com/onnx-js-universal-deep-learning-models-in-the-browser-fbd268c67513
+- https://github.com/microsoft/onnxjs-demo/blob/08f48958cc6fb396f7a5be7603a1929c81fbae36/src/components/models/Yolo.vue
+- https://github.com/microsoft/onnxjs/blob/4085b7e61804d093e36af6a456d8c14c329f0a0a/examples/browser/resnet50/index.js#L29
+- https://github.com/Microsoft/onnxjs-demo
+- https://heartbeat.fritz.ai/building-an-image-recognition-app-using-onnx-js-c7147f4f291b
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
