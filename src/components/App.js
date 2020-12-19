@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
@@ -8,8 +8,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import 'react-aspect-ratio/aspect-ratio.css'
 import AspectRatio from 'react-aspect-ratio';
 import Carousel from 'react-material-ui-carousel'
+import Image from 'material-ui-image'
 
 import "fontsource-roboto"
+import motivationalLeo1 from './../img/motivational-leo-v1.png'
+import motivationalLeo2 from './../img/motivational-leo-v2.png'
 
 import ModelDemo from './ModelDemo'
 
@@ -41,6 +44,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function App() {
   const classes = useStyles();
+
+  const [imgLeo, setImgLeo] = useState(motivationalLeo1)
+  const toggleLeo = (event) => {
+    if (imgLeo==motivationalLeo1) {
+      setImgLeo(motivationalLeo2);
+    } else {
+      setImgLeo(motivationalLeo1);
+    }
+  };
+
   return (
     <Container className={classes.root}>
       <CssBaseline />
@@ -229,6 +242,16 @@ export default function App() {
           Bla bla bla Blaaaaa bla bla blah blaah blah Blah blaaah Blaaah Bla bla Blah
           blah Blah blaaah Blaaah Bla bla Blahbla bla blah blaah blah blaaah Blaaah
         </Typography>
+      </Paper>
+      <Paper className={classes.panel}>
+        <Container style={{ width:"40%" }}>
+          <Image
+            src={imgLeo}
+            color="transparent"
+            onClick={toggleLeo}
+            style={{ height:"100px" }}
+          />
+        </Container>
       </Paper>
     </Container>
   );

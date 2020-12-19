@@ -68,13 +68,13 @@ export default function ModelDemo() {
   const startRunModel = async () => {
     if (!loaded || !imgData || !(textData.length>0)) return;
     setStartedRun(true);
-    console.log('clicked start button');
-    console.log('image data:')
+    console.log('clicked start button!');
+    console.log('image data: ')
     console.log(imgData);
-    console.log('text data:')
-    console.log(textData);
+    console.log('text data: '+textData);
     console.log('startRunModel '+setOutputMap);
     runModel(session, imgData, textData, setOutputMap);
+    console.log('done running');
     setStartedRun(false);
   };
   useEffect(() => {
