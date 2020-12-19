@@ -78,9 +78,9 @@ export default function App() {
         <AspectRatio ratio="16 / 9" style={{ maxWidth: '60%', left: '50%', transform: 'translate(-50%, 0)' }}>
           <iframe
             src="https://www.youtube-nocookie.com/embed/bZe5J8SVCYQ"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
+            allowFullScreen>
           </iframe>
         </AspectRatio>
       </Paper>

@@ -1,12 +1,11 @@
 import loadImage from 'blueimp-load-image';
-import {
-  Tensor,
-  InferenceSession
-} from 'onnxjs';
+import { Tensor, InferenceSession } from 'onnxjs';
 import ndarray from 'ndarray';
 import ops from 'ndarray-ops';
+import model from '../dogs-resnet18.onnx';
 
-const model_url = 'https://github.com/onnx/models/raw/master/vision/classification/mobilenet/model/mobilenetv2-7.onnx'
+// const model_url = 'https://homes.cs.washington.edu/~jyzhou15/mobilenetv2-7.onnx'
+// const model_url = '../mobilenetv2-7.onnx'
 
 export const getBreed = className => className.split('_').map(p => {
   return p.charAt(0).toUpperCase() + p.slice(1)
@@ -43,24 +42,27 @@ async function warmupModel(session) {
 }
 
 export async function loadModel(session) {
-  await session.loadModel(model_url);
+  await session.loadModel(model);
   await warmupModel(session);
 }
 
-async function _runModel(session, input, setOutputMap) {
+async function _runModel(session, imgInput, textInput, setOutputMap) {
   const {
     width,
     height
-  } = input;
-  const data = preprocess(input);
-  const inputTensor = new Tensor(data, 'float32', [1, 3, width, height]);
+  } = imgInput;
+  // TODO modify
+  const data = preprocess(imgInput);
+  const imgInputTensor = new Tensor(data, 'float32', [1, 3, width, height]);
   // await wait(0);
-  const outputMap = await session.run([inputTensor]);
+  const outputMap = await session.run([imgInputTensor]);
+  console.log('_runModel '+setOutputMap);
   setOutputMap(outputMap);
 }
 
-export function runModel(session, input, setOutputMap) {
-  setTimeout(() => _runModel(session, input, setOutputMap), 10);
+export function runModel(session, imgInput, textInput, setOutputMap) {
+  console.log('runModel '+setOutputMap);
+  setTimeout(() => _runModel(session, imgInput, textInput, setOutputMap), 10);
 }
 
 // borrowed from onnx.js example: https://github.com/microsoft/onnxjs/blob/4085b7e61804d093e36af6a456d8c14c329f0a0a/examples/browser/resnet50/index.js#L29
